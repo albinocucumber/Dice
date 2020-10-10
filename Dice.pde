@@ -1,24 +1,30 @@
 int sumNum = 0;
+int scale = 2000;
+int diceSize = scale/90;
 
 void setup(){
+   textSize(9);
    noLoop();
-   size(500, 500);
+   fullScreen();
+   frameRate(10);
 }
 
 void draw(){
   sumNum = 0;
   background(200);
-   for(int y = 50; y <= 400; y += 100){     
-     for(int x = 50; x <= 400; x += 100){
+   for(int y = ((int)(scale/30)); y <= scale - ((int)(scale/20)); y += ((int)(scale/90))){     
+     for(int x = ((int)(scale/30)); x <= scale - ((int)(scale/20)); x += ((int)(scale/90))){
        Die pop = new Die(x, y);
        pop.show();
     }
   }
-  text("Sum: " + sumNum, 210, 450);
+  if (mousePressed && mouseButton == LEFT)
+    noLoop();
+  text("Sum: " + sumNum, scale/2 - 50, scale - 15);
 }
 
 void mousePressed(){
-  redraw();
+  loop();
 }
 
 class Die {
@@ -37,9 +43,9 @@ class Die {
   void show() {
     noStroke();
     fill((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
-    rect(myX, myY, 70, 70, 10);
+    rect(myX, myY, diceSize, diceSize, 10);
     fill(255);
-    text(num, myX + 33, myY + 38);
+    text(num, myX + (diceSize/2 - 3), myY + (diceSize/2 + 5));
     sumNum += num;
   }
 }
