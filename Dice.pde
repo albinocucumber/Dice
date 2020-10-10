@@ -1,5 +1,5 @@
 int sumNum = 0;
-int scale = 2000;
+int scale = 1000;
 int diceSize = scale/90;
 
 void setup(){
