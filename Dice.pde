@@ -5,7 +5,7 @@ int diceSize = scale/90;
 void setup(){
    textSize(9);
    noLoop();
-   fullScreen();
+   size(1000, 1000);
    frameRate(10);
 }
 
